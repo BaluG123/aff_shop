@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends 'testapp/base.html' %}
+{% load static %}
+{% block title %}
+oof.com
+{% endblock %}
+{% block content %}
+{% for item in items_list %}
+{% if item.image %}
+<div class="col-md-12 col-sm-12 col-lg-4 col-xl-4 ">
+<a href="{{item.link}}">
+<img src="{{ item.image.url }}" alt="{% static "images/puma.png" %}" width="100%" height="auto">
+<p style="text-decoration: none;color: black;">{{item.item_name}}</p>
+</a>
+<p> <span style="font-weight: lighter; text-decoration: line-through;color: red;"> price: {{item.price}} &#8377;</span>&nbsp&nbsp<span>offered-price: {{item.off_price}} &#8377;</span>&nbsp&nbsp <span style="color:green;font-weight: bold;">{{item.off_p}}% off</span></p>
+<p>{{item.company}}</p><hr>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}
